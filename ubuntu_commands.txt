@@ -1,4 +1,4 @@
-For joshiskitchen.in
+## For joshiskitchen.in ##
 
 sudo mkdir -p /var/www/joshiskitchen.in/public_html
 
@@ -16,7 +16,7 @@ sudo nano /var/www/joshiskitchen.in/public_html/index.html
 </html>
 
 sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/joshiskitchen.in.conf
-sudo nano /etc/apache2/sites-available/example.com.conf
+sudo nano /etc/apache2/sites-available/joshiskitchen.in.conf
 <VirtualHost *:80>
     ServerAdmin admin@eka-solutions.com
     ServerName joshiskitchen.in
@@ -34,3 +34,22 @@ sudo nano /etc/hosts
 139.59.89.178 joshiskitchen.in
 
 http://joshiskitchen.in
+
+//SSL Generate
+sudo certbot --apache -d joshiskitchen.in -d www.joshiskitchen.in
+sudo systemctl restart apache2
+
+//WP install
+
+CREATE DATABASE dbjoshiskitchen;
+CREATE USER 'joshiskitchen'@'localhost' IDENTIFIED BY 'Eka@786';
+GRANT ALL ON dbjoshiskitchen.* TO 'joshiskitchen'@'localhost' IDENTIFIED BY 'Eka@786' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+EXIT;
+
+
+cd /tmp && wget https://wordpress.org/latest.tar.gz
+tar -zxvf latest.tar.gz
+sudo mv wordpress /var/www/joshiskitchen.in/public_html
+
+sudo mv /var/www/joshiskitchen.in/public_html/wordpress /var/www/joshiskitchen.in/public_html
