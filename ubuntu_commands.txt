@@ -3,7 +3,7 @@
 sudo mkdir -p /var/www/joshiskitchen.in/public_html
 
 sudo chown -R www-data:www-data /var/www/joshiskitchen.in/public_html
-sudo chmod -R 755 /var/www
+sudo chmod -R 755 /var/www/joshiskitchen.in
 
 sudo nano /var/www/joshiskitchen.in/public_html/index.html
 <html>
@@ -52,4 +52,10 @@ cd /tmp && wget https://wordpress.org/latest.tar.gz
 tar -zxvf latest.tar.gz
 sudo mv wordpress /var/www/joshiskitchen.in/public_html
 
-sudo mv /var/www/joshiskitchen.in/public_html/wordpress /var/www/joshiskitchen.in/public_html
+
+cd /var/www/joshiskitchen.in/public_html
+sudo mv wordpress/* .
+sudo rmdir wordpress
+
+cp /var/www/joshiskitchen.in/public_html/wp-config-sample.php /var/www/joshiskitchen.in/public_html/wp-config.php
+
