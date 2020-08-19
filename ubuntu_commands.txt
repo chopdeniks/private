@@ -1,1 +1,36 @@
+For joshiskitchen.in
 
+sudo mkdir -p /var/www/joshiskitchen.in/public_html
+
+sudo chown -R www-data:www-data /var/www/joshiskitchen.in/public_html
+sudo chmod -R 755 /var/www
+
+sudo nano /var/www/joshiskitchen.in/public_html/index.html
+<html>
+  <head>
+    <title>Welcome to joshiskitchen.in!</title>
+  </head>
+  <body>
+    <h1>Success! The joshiskitchen.in virtual host is working!</h1>
+  </body>
+</html>
+
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/joshiskitchen.in.conf
+sudo nano /etc/apache2/sites-available/example.com.conf
+<VirtualHost *:80>
+    ServerAdmin admin@eka-solutions.com
+    ServerName joshiskitchen.in
+    ServerAlias www.joshiskitchen.in
+    DocumentRoot /var/www/joshiskitchen.in/public_html
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+sudo a2ensite joshiskitchen.in.conf
+sudo systemctl restart apache2
+sudo systemctl status apache2
+
+sudo nano /etc/hosts
+139.59.89.178 joshiskitchen.in
+
+http://joshiskitchen.in
