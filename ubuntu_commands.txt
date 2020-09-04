@@ -60,3 +60,6 @@ sudo rmdir wordpress
 cp /var/www/joshiskitchen.in/public_html/wp-config-sample.php /var/www/joshiskitchen.in/public_html/wp-config.php
 
 sudo nano /etc/php/7.4/apache2/php.ini
+
+
+Database backup -- sudo mysqldump -u root -p dbname > /var/www/html/database-dump.sql
