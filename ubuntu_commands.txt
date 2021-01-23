@@ -35,6 +35,12 @@ sudo nano /etc/hosts
 
 http://joshiskitchen.in
 
+//INstall Certbot
+//apt-get install software-properties-common apt-transport-https ca-certificates -y
+//add-apt-repository ppa:certbot/certbot
+//apt-get update -y
+//sudo apt install -y certbot python3-certbot-apache
+
 //SSL Generate
 sudo certbot --apache -d joshiskitchen.in -d www.joshiskitchen.in
 sudo systemctl restart apache2
